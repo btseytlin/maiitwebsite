@@ -115,9 +115,9 @@ MAX_UPLOAD_SIZE = "5242880"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/' 
 
-
+STATIC_ROOT = ''
 STATIC_URL = '/static/'
-
+STATICFILES_DIRS = ( os.path.join('static'), )
 #Add to a form containing a FileField and change the field names accordingly.
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _

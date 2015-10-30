@@ -6,6 +6,12 @@
 	{% load bootstrap3 %}
 	{% bootstrap_css %}
 	{% bootstrap_javascript %}
+	
+<!-- 	<link href="{% static 'css/theme.css' %}" rel="stylesheet"> -->
+
+	<link rel="stylesheet/less" type="text/css" media="all" href="{% static 'less/theme.less' %}" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.js"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
