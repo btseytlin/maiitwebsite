@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	{% load static %}
+	{% load bootstrap3 %}
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+	<div class="site-wrapper">
+			<div class="container">
+				{% include 'navbar.html' %}
+				<div id="messages">
+					{% include 'bootstrap3/messages.html' %}
+				</div>
+			    <div>
+				    {% block content %}{% endblock %}
+				</div>
+		</div>
+		<footer class="footer">
+			<div class="container">
+			    {% block footer %}
+			    <hr>
+			    <p>All rights alright.</p>
+			    {% endblock %}
+	    	</div>
+	    </footer>
+    </div>
+</body>
+</html>
+

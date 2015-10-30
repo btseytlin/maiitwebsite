@@ -1,0 +1,32 @@
+{% load bootstrap3 %}
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class=" panel-title">
+
+               <div class="col-md-10 ">
+                  <div class="row text-left">
+                     <div>
+                        <h3 class="col-md-12">{{ event.title }}</h3>
+                     </div>
+                  </div>
+                  <div class="row text-left">
+                     <div class='col-md-12'>
+                        {% bootstrap_icon "time" %} {% event.date %}
+                     </div>
+                  </div>
+               </div>
+
+         </div>
+      </div>
+
+   <div class="panel-body">
+      {% if event.image %}
+         <div>
+            <img class="img-responsive img-thumbnai" width="100" src="{{ event.image.url }}" alt="event-{{event.slug}}-image" style="display:inline;">
+         </div>
+      {% endif %}
+      <div>
+      <p>{{event.description}}</p>
+      </div>
+   </div>
+</div>

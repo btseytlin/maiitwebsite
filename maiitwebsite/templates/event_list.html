@@ -1,0 +1,20 @@
+{% load bootstrap3 %}
+{% if event_list %}
+{% load i18n %}
+<div class='container'>
+   {% for event in event_list %}
+	    {% with forloop.counter|divisibleby:4 as newrow %}
+		    {% if newrow %}
+		     	</div>
+		    {% endif %}
+			{% if newrow or forloop.counter0 == 0 %}
+				<div class='row'>
+			{% endif %}
+			<div class='col-md-4'>
+				{% include "event_card.html"%}	
+
+			</div>
+		{% endwith %}
+   {% endfor %}
+</div>
+{% endif %}
