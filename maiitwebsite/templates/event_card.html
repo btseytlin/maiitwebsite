@@ -3,7 +3,7 @@
    <div class="panel-heading">
       <div class=" panel-title">
 
-               <div class="col-md-10 ">
+               <div>
                   <div class="row text-left">
                      <div>
                         <h3 class="col-md-12">{{ event.title }}</h3>
@@ -11,7 +11,7 @@
                   </div>
                   <div class="row text-left">
                      <div class='col-md-12'>
-                        {% bootstrap_icon "time" %} {% event.date %}
+                        {% bootstrap_icon "time" %} {{ event.date }}
                      </div>
                   </div>
                </div>
@@ -22,7 +22,7 @@
    <div class="panel-body">
       {% if event.image %}
          <div>
-            <img class="img-responsive img-thumbnai" width="100" src="{{ event.image.url }}" alt="event-{{event.slug}}-image" style="display:inline;">
+            <img class="img-responsive img-thumbnail" src="{{ event.image.url }}" alt="event-{{event.slug}}-image" style="display:inline;">
          </div>
       {% endif %}
       <div>

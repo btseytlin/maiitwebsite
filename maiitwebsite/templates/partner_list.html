@@ -1,10 +1,10 @@
 {% load bootstrap3 %}
-{% if event_list %}
-{% load i18n %}
+{% if partner_list %}
+
 <div class='container'>
-   {% for event in event_list %}
+   {% for partner in partner_list %}
 			<div class='col-md-8'>
-				{% include "event_card.html"%}	
+				{% include "partner_card.html"%}	
 
 			</div>
    {% endfor %}

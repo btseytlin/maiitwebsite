@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block title %}
+MAI IT PROJECTS
+{% endblock %}
+{% block content %}
+<div class="container">
+<h2 class="text-center">Проекты</h2>
+{% if project_list %}
+	<div>
+	   {% include "paginator.html" with lst=project_list total_pages=total_pages page_range=page_range  %}
+
+	   {% include "project_list.html" %}	
+
+	   {% include "paginator.html" with lst=project_list total_pages=total_pages page_range=page_range  %}	
+	</div>
+{% endif %}
+</div>
+{% endblock %}

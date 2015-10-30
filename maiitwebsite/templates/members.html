@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block title %}
+MAI IT MEMBERS
+{% endblock %}
+{% block content %}
+<div class="container">
+<h2 class="text-center">Члены клуба</h2>
+{% if member_list %}
+	<div>
+	   {% include "paginator.html" with lst=member_list total_pages=total_pages page_range=page_range  %}
+
+	   {% include "member_list.html" %}	
+
+	   {% include "paginator.html" with lst=member_list total_pages=total_pages page_range=page_range  %}	
+	</div>
+{% endif %}
+</div>
+{% endblock %}

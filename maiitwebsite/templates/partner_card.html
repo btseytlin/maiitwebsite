@@ -1,0 +1,29 @@
+{% load bootstrap3 %}
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class=" panel-title">
+
+               <div>
+                  <div class="row text-left">
+                     <div>
+                        <h3 class="col-md-12">{{ partner.name }}</h3>
+                     </div>
+                  </div>
+               </div>
+
+         </div>
+      </div>
+
+   <div class="panel-body">
+      {% if partner.image %}
+         <div>
+            <img class="img-responsive img-thumbnail" src="{{ partner.image.url }}" alt="partner-name-image" style="display:inline;">
+         </div>
+      {% endif %}
+      {% if partner.description %}
+      <div>
+      <p>{{partner.description}}</p>
+      </div>
+      {% endif %}
+   </div>
+</div>

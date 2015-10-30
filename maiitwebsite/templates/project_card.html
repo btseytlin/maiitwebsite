@@ -1,0 +1,26 @@
+{% load bootstrap3 %}
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class=" panel-title">
+               <div class="row text-left">
+                  <div>
+                     <h3 class="col-md-12">{{ project.title }}</h3>
+                  </div>
+               </div>
+         </div>
+      </div>
+
+   <div class="panel-body">
+      <p>{{project.created_date}}</p>
+      {% if project.image %}
+         <div>
+            <img class="img-responsive img-thumbnail" src="{{ project.image.url }}" alt="project-title-image" style="display:inline;">
+         </div>
+      {% endif %}
+      {% if project.description %}
+      <div>
+      <p>{{project.description}}</p>
+      </div>
+      {% endif %}
+   </div>
+</div>

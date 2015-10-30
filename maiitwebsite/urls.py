@@ -17,11 +17,16 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from . import views
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name="index"),
+    url(r'^partners$', views.partners, name="partners"),
+    url(r'^projects$', views.projects, name="projects"),
+    url(r'^members$', views.members, name="members"),
+    url(r'^about$', views.about, name="about"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

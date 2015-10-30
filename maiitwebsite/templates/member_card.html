@@ -1,0 +1,29 @@
+{% load bootstrap3 %}
+<div class="panel panel-default">
+   <div class="panel-heading">
+      <div class=" panel-title">
+
+               <div>
+                  <div class="row text-left">
+                     <div>
+                        <h3 class="col-md-12">{{ member.name }}</h3>
+                     </div>
+                  </div>
+               </div>
+
+         </div>
+      </div>
+
+   <div class="panel-body">
+      {% if member.image %}
+         <div>
+            <img class="img-responsive img-thumbnail" src="{{ member.image.url }}" alt="member-name-image" style="display:inline;">
+         </div>
+      {% endif %}
+      {% if member.description %}
+      <div>
+      <p>{{member.description}}</p>
+      </div>
+      {% endif %}
+   </div>
+</div>

@@ -4,49 +4,16 @@
 MAI IT INDEX
 {% endblock %}
 {% block content %}
+<div class="container">
+<h2 class="text-center">Афиша мероприятий</h2>
 {% if event_list %}
-<div class="">
-   {% include "event_list.html" %}	
+	<div>
+	   {% include "paginator.html" with lst=event_list total_pages=total_pages page_range=page_range  %}
 
-   {% if event_list and total_pages > 1 %}
-	<nav class="text-center">
-	  <ul class="pagination">
-	  	{% if not event_list.number == 1 %}
-	    <li>
-	      <a aria-label="First" href="?page={{ 1 }}">&laquo;</a>
-	    </li>
-	    {% endif %}
-	    {% if event_list.has_previous %}
-	    <li>
-	      <a aria-label="Previous" href="?page={{ event_list.previous_page_number }}">&larr;</a>
-	    </li>
-	    {% endif %}
-	    {% for page in page_range %}
-	    	{% if event_list.number == page %}
-	    		<li class="active"><a href="?page={{ page }}">{{page}}<span class="sr-only">(current)</span></a></li>
+	   {% include "event_list.html" %}	
 
-	    	{% else %}
-	    		<li><a href="?page={{ page }}">{{page}}</a></li>
-	    	{% endif %}
-	    {% endfor %}
-	    {% if event_list.has_next %}
-		    <li>
-			    <a href="?page={{ event_list.next_page_number }}" aria-label="Next">
-			        <span aria-hidden="true">&rarr;</span>
-		        </a>
-		    </li>
-	    {% endif %}
-     	{% if not event_list.number == total_pages %}
-		    <li>
-			    <a href="?page={{ total_pages }}" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-		        </a>
-		    </li>
-	    {% endif %}
-	  </ul>
-	</nav>
-
-	{% endif %}
-</div>
+	   {% include "paginator.html" with lst=event_list total_pages=total_pages page_range=page_range  %}	
+	</div>
 {% endif %}
+</div>
 {% endblock %}

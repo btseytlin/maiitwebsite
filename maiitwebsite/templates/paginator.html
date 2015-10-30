@@ -1,0 +1,39 @@
+ {% if lst and total_pages > 1 %}
+	<nav class="text-center">
+	  <ul class="pagination">
+	  	{% if not lst.number == 1 %}
+	    <li>
+	      <a aria-label="First" href="?page={{ 1 }}">&laquo;</a>
+	    </li>
+	    {% endif %}
+	    {% if lst.has_previous %}
+	    <li>
+	      <a aria-label="Previous" href="?page={{ lst.previous_page_number }}">&larr;</a>
+	    </li>
+	    {% endif %}
+	    {% for page in page_range %}
+	    	{% if lst.number == page %}
+	    		<li class="active"><a href="?page={{ page }}">{{page}}<span class="sr-only">(current)</span></a></li>
+
+	    	{% else %}
+	    		<li><a href="?page={{ page }}">{{page}}</a></li>
+	    	{% endif %}
+	    {% endfor %}
+	    {% if lst.has_next %}
+		    <li>
+			    <a href="?page={{ lst.next_page_number }}" aria-label="Next">
+			        <span aria-hidden="true">&rarr;</span>
+		        </a>
+		    </li>
+	    {% endif %}
+     	{% if not lst.number == total_pages %}
+		    <li>
+			    <a href="?page={{ total_pages }}" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+		        </a>
+		    </li>
+	    {% endif %}
+	  </ul>
+	</nav>
+
+	{% endif %}
