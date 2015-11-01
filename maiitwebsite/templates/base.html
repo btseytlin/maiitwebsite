@@ -7,25 +7,26 @@
 	{% bootstrap_css %}
 	{% bootstrap_javascript %}
 	
-<!-- 	<link href="{% static 'css/theme.css' %}" rel="stylesheet"> -->
+	<link href="{% static 'css/theme.css' %}" rel="stylesheet">
 
-	<link rel="stylesheet/less" type="text/css" media="all" href="{% static 'less/theme.less' %}" />
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.js"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-	<div class="site-wrapper">
-
-			<div class="container">
+		<header>
+			<div  class="container">
 				{% include 'header.html' %}
 				{% include 'navbar.html' %}
-				<div id="messages">
-					{% include 'bootstrap3/messages.html' %}
-				</div>
-			    <div>
-				    {% block content %}{% endblock %}
-				</div>
+			</div>
+		</header>
+		<div class="content">
+			<div  class="container">
+			<div id="messages">
+				{% include 'bootstrap3/messages.html' %}
+			</div>
+		    <div>
+			    {% block content %}{% endblock %}
+			</div>
+			</div>
 		</div>
 		<footer class="footer">
 			<div class="container">
@@ -35,7 +36,6 @@
 			    {% endblock %}
 	    	</div>
 	    </footer>
-    </div>
 </body>
 </html>
 

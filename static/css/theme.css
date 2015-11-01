@@ -1,18 +1,100 @@
-/*!
- * Bootstrap v3.3.5 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+/*
+Custom
 
-/*!
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=2cb1f820458265c6e8bb)
- * Config saved to config.json and https://gist.github.com/2cb1f820458265c6e8bb
- */
-/*!
- * Bootstrap v3.3.5 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+*/
+
+html, div, span {
+  border-radius: 0px!important;
+  background:none!important;
+  text-shadow:none!important;
+  box-shadow:none!important;
+}
+nav {
+  font-size:16px;
+}
+
+header {
+  border-bottom: 1px solid black;
+  background-color:#0093DA;
+}
+
+.logo a{
+  color:white;
+}
+
+.content {
+  padding-top:0px;
+}
+.navbar-default {
+    background:none;
+    border:none;
+    display: block;
+    float: right;
+    vertical-align: top;
+    margin:0;
+    margin-top:5px;
+    height:auto;
+}
+
+.navbar-nav {
+  background: white;
+    border-top: 0px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    float: none!important;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+  padding:0;
+
+}
+
+.navbar-nav > li {
+  border: 1px solid gray;
+ 
+  margin: 0px;
+
+
+}
+
+.navbar-brand,
+.navbar-nav > li > a {
+  padding:25px;
+
+}
+
+.navbar-nav > li > a:hover {
+  background-color: #e0e0e0!important;
+}
+
+.headline-container {
+
+}
+.headline {
+}
+h2 {
+
+  display:inline-block;
+  padding-bottom: 15px;
+  border-bottom: 4px solid black;
+}
+
+.page-panel{
+  border-radius:0px;
+  
+  border-top:0px;
+  background: none;
+}
+
+.text-content{
+  border-radius:0px;
+  border: 1px solid black;
+  border:0;
+  background: #e0e0e0!important;
+}
+/* bootstrap stuff, to be removed */
 .btn-default,
 .btn-primary,
 .btn-success,
@@ -345,11 +427,9 @@ fieldset[disabled] .btn-danger.active {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff2e6da4', GradientType=0);
   background-color: #2e6da4;
 }
-.navbar-default {
-  border-radius: 20px;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
-}
+
+
+
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .active > a {
   background-image: -webkit-linear-gradient(top, #dbdbdb 0%, #e2e2e2 100%);
@@ -361,10 +441,7 @@ fieldset[disabled] .btn-danger.active {
   -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075);
 }
-.navbar-brand,
-.navbar-nav > li > a {
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
-}
+
 .navbar-inverse {
   background-image: -webkit-linear-gradient(top, #3c3c3c 0%, #222222 100%);
   background-image: -o-linear-gradient(top, #3c3c3c 0%, #222222 100%);
