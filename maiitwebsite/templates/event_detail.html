@@ -1,11 +1,21 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+
+{% load bootstrap3 %}
+{% block title %}
+MAI IT MEMBER
+{% endblock %}
+{% block content %}
 {% load bootstrap3 %}
 <div class="panel panel-default">
    <div class="panel-heading">
       <div class=" panel-title">
+
                <div>
                   <div class="row text-left">
                      <div>
-                        <h3 class="col-md-12"><a href="{% url 'event' slug=event.slug %}" >{{ event.title }}</a></h3>
+                        <h3 class="col-md-12">{{ event.title }}</h3>
                      </div>
                   </div>
                   <div class="row text-left">
@@ -29,3 +39,4 @@
       </div>
    </div>
 </div>
+{% endblock %}

@@ -2,8 +2,7 @@ from django.shortcuts import render, render_to_response
 from club.models import *
 from . import utils
 from django.template import RequestContext
-
-def index(request):
+def events(request):
 	template_name = 'index.html'
 
 	events = Event.objects.all()
@@ -15,6 +14,9 @@ def index(request):
 	total_num_pages = 0
 	event_list, page_range, total_num_pages = utils.paginated_list(page, paginate_by, show_pages_delta, events)
 	return render_to_response(template_name, { "event_list": event_list, "page_range": page_range, "total_pages":total_num_pages }, context_instance=RequestContext(request))
+
+def index(request):
+	return events(request)
 
 def partners(request):
 	template_name = 'partners.html'
@@ -28,6 +30,7 @@ def partners(request):
 	total_num_pages = 0
 	partner_list, page_range, total_num_pages = utils.paginated_list(page, paginate_by, show_pages_delta, partners)
 	return render_to_response(template_name, { "partner_list": partner_list, "page_range": page_range, "total_pages":total_num_pages }, context_instance=RequestContext(request))
+
 
 def projects(request):
 	template_name = 'projects.html'
@@ -54,6 +57,8 @@ def members(request):
 	total_num_pages = 0
 	member_list, page_range, total_num_pages = utils.paginated_list(page, paginate_by, show_pages_delta, members)
 	return render_to_response(template_name, { "member_list": member_list, "page_range": page_range, "total_pages":total_num_pages }, context_instance=RequestContext(request))
+
+
 
 def about(request):
 	return render_to_response('about.html', RequestContext(request))

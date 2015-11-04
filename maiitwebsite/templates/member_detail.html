@@ -1,4 +1,12 @@
+{% extends "base.html" %}
 {% load bootstrap3 %}
+
+
+{% load bootstrap3 %}
+{% block title %}
+MAI IT MEMBER
+{% endblock %}
+{% block content %}
 <div class="panel panel-default">
    <div class="panel-heading">
       <div class=" panel-title">
@@ -6,7 +14,7 @@
                <div>
                   <div class="row text-left">
                      <div>
-                        <h3 class="col-md-12"><a href="{% url 'member' slug=member.slug %}" >{{ member.name }}</a></h3>
+                        <h3 class="col-md-12">{{ member.name }}</h3>
                      </div>
                   </div>
                </div>
@@ -27,3 +35,4 @@
       {% endif %}
    </div>
 </div>
+{% endblock %}

@@ -1,3 +1,12 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+
+
+{% load bootstrap3 %}
+{% block title %}
+MAI IT PARTNER
+{% endblock %}
+{% block content %}
 {% load bootstrap3 %}
 <div class="panel panel-default">
    <div class="panel-heading">
@@ -6,7 +15,7 @@
                <div>
                   <div class="row text-left">
                      <div>
-                        <h3 class="col-md-12"><a href="{% url 'partner' slug=partner.slug %}" >{{ partner.name }}</a></h3>
+                        <h3 class="col-md-12">{{ partner.name }}</h3>
                      </div>
                   </div>
                </div>
@@ -27,3 +36,5 @@
       {% endif %}
    </div>
 </div>
+
+{% endblock %}

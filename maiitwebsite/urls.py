@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^projects$', views.projects, name="projects"),
     url(r'^members$', views.members, name="members"),
     url(r'^about$', views.about, name="about"),
+    url(r'^club/', include('club.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
