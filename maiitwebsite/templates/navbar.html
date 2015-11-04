@@ -1,22 +1,26 @@
 {% load bootstrap3 %}
 
-<nav class=" pull-right navbar navbar-default">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display 
     <div class="navbar-header">
-      <a href="{% url 'index' %}">
-        <h1 class="text-center">MAI IT</h1>
-      </a>
+      <button type="button" class="navbar-toggle" 
+         data-toggle="collapse" data-target="#navbar-menu">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+      </button>
+      {% include 'brand.html' %}
     </div>
-    -->
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
+
+    <div class="pull-right  collapse navbar-collapse" id="navbar-menu">
       <ul class="nav navbar-nav">
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'members' %}" >Members</a></li>
-        <li><a href="{% url 'partners' %}" >Partners</a></li>
-        <li><a href="{% url 'projects' %}">Projects</a></li>
+        <li><a href="{% url 'index' %}">Афиша</a></li>
+        <li><a href="{% url 'about' %}">О клубе</a></li>
+        <li><a href="{% url 'members' %}" >Члены клуба</a></li>
+        <li><a href="{% url 'partners' %}" >Партнеры</a></li>
+        <li><a href="{% url 'projects' %}">Проекты</a></li>
      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>

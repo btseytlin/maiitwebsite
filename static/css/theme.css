@@ -28,8 +28,6 @@ header {
 .navbar-default {
     background:none;
     border:none;
-    display: block;
-    float: right;
     vertical-align: top;
     margin:0;
     margin-top:5px;
@@ -41,8 +39,6 @@ header {
     border-top: 0px solid black;
     margin-left: auto;
     margin-right: auto;
-    display: inline-block;
-    float: none!important;
 }
 
 .navbar .navbar-collapse {
@@ -58,8 +54,13 @@ header {
 
 
 }
+.navbar-brand {
+  color:white!important;
+  font-size:16px;
+  min-height:75px;
+  margin-top:-20px;
+}
 
-.navbar-brand,
 .navbar-nav > li > a {
   padding:25px;
 
@@ -94,6 +95,46 @@ h2 {
   border:0;
   background: #e0e0e0!important;
 }
+
+
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+}
+
 /* bootstrap stuff, to be removed */
 .btn-default,
 .btn-primary,
@@ -463,10 +504,7 @@ fieldset[disabled] .btn-danger.active {
   -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
   box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.25);
 }
-.navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-nav > li > a {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
+
 .navbar-static-top,
 .navbar-fixed-top,
 .navbar-fixed-bottom {
