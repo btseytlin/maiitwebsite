@@ -93,7 +93,19 @@ h2 {
   border-radius:0px;
   border: 1px solid black;
   border:0;
+  font-size:16px;
   background: #e0e0e0!important;
+  min-height:225px;
+  padding:10px;
+  margin-bottom:10px;
+}
+
+.text-decoration{
+  text-align: center;
+  background: #0093DA!important;
+  color:white;
+  padding:10px;
+  margin-bottom:10px;
 }
 
 
