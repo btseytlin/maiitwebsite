@@ -3,9 +3,17 @@ Custom
 
 */
 
+canvas{
+  position: fixed;
+    bottom: 0;
+    right: 0;
+  z-index: -100;
+
+}
+
 html, div, span {
   border-radius: 0px!important;
-  background:none!important;
+  background:transparent!important;
   text-shadow:none!important;
   box-shadow:none!important;
 }
@@ -14,19 +22,23 @@ nav {
 }
 
 header {
-  border-bottom: 1px solid black;
-  background-color:#0093DA;
+  
 }
 
-.logo a{
-  color:white;
+.navbar-header {
+  background-color:#0093DA!important;
+ 
+}
+
+.navbar-brand h1 {
+  margin:auto;
 }
 
 .content {
   padding-top:0px;
 }
 .navbar-default {
-    background:none;
+    background:transparent;
     border:none;
     vertical-align: top;
     margin:0;
@@ -35,7 +47,7 @@ header {
 }
 
 .navbar-nav {
-  background: white;
+  background: transparent!important;
     border-top: 0px solid black;
     margin-left: auto;
     margin-right: auto;
@@ -48,26 +60,35 @@ header {
 }
 
 .navbar-nav > li {
-  border: 1px solid gray;
+  
  
   margin: 0px;
+}
 
+.navbar-default > .container-fluid {
+  padding-left:30px;
+  padding-right:30px;
 
 }
+
 .navbar-brand {
   color:white!important;
   font-size:16px;
   min-height:75px;
-  margin-top:-20px;
+
+  margin:0!important;
+  font-size:36px!important;
+  border-bottom: 4px solid #44C2FF;
 }
 
 .navbar-nav > li > a {
   padding:25px;
+  border-bottom: 4px solid #0093DA;
 
 }
 
 .navbar-nav > li > a:hover {
-  background-color: #e0e0e0!important;
+  border-bottom: 4px solid #44C2FF;
 }
 
 .headline-container {
@@ -86,18 +107,25 @@ h2 {
   border-radius:0px;
   
   border-top:0px;
-  background: none;
+
+}
+.page-content .panel {
+  margin-bottom:0px;
+  padding:10px;
+}
+.page-content{
+  
+  padding:0px;
+  display:inline-block;
 }
 
 .text-content{
-  border-radius:0px;
-  border: 1px solid black;
-  border:0;
   font-size:16px;
-  background: #e0e0e0!important;
-  min-height:225px;
+  border:0;
+  border: 2px solid #0093DA!important;
+  min-height:230px;
   padding:10px;
-  margin-bottom:10px;
+  margin-bottom:0px;
 }
 
 .text-decoration{
@@ -105,9 +133,13 @@ h2 {
   background: #0093DA!important;
   color:white;
   padding:10px;
-  margin-bottom:10px;
+  border:0;
+  margin-bottom:0px;
 }
 
+#navbar-menu {
+  overflow:hidden;
+}
 
 @media (max-width: 991px) {
     .navbar-header {

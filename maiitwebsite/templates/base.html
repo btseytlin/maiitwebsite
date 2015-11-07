@@ -8,10 +8,11 @@
 	{% bootstrap_javascript %}
 	
 	<link href="{% static 'css/theme.css' %}" rel="stylesheet">
-
+	<script src="{% static 'js/animation.js' %}"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+<canvas></canvas>
 		<header>
 			<div  class="container">
 				{% include 'navbar.html' %}
