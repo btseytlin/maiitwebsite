@@ -27,6 +27,13 @@ header {
   
 }
 
+.wrapper {
+  min-height: 100%;
+  height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
+  height: 100%;
+  margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+
 .navbar-header {
   background-color:#0093DA!important;
  
@@ -44,7 +51,7 @@ header {
     border:none;
     vertical-align: top;
     margin:0;
-    margin-top:5px;
+
     height:auto;
 }
 
@@ -150,10 +157,20 @@ h2 {
   border:1px solid  #0093DA;
   margin-bottom:40px!important;
 }
+
+.member-card {
+  border:1px solid  #0093DA;
+}
+
 #navbar-menu {
   overflow:hidden;
 }
 
+.img-thumbnail {
+  border:none;
+  margin:none;
+  padding:none;
+}
 
 @media (max-width: 991px) {
     .navbar-header {

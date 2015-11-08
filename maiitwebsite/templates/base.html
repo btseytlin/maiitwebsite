@@ -8,11 +8,11 @@
 	{% bootstrap_javascript %}
 	
 	<link href="{% static 'css/theme.css' %}" rel="stylesheet">
-	<script src="{% static 'js/animation.js' %}"></script>
+	
     <title>{% block title %}{% endblock %}</title>
 </head>
-<body>
-<canvas style="opactiy:0.3;"></canvas>
+<body>	
+	<div class='wrapper'>
 		<header>
 			<div  class="container">
 				{% include 'navbar.html' %}
@@ -28,14 +28,8 @@
 			</div>
 			</div>
 		</div>
-		<footer class="footer">
-			<div class="container">
-			    {% block footer %}
-			    <hr>
-			    <p>All rights alright.</p>
-			    {% endblock %}
-	    	</div>
-	    </footer>
+		<div class="push"></div>
+	</div>
 </body>
 </html>
 

@@ -1,38 +1,50 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 
-
 {% load bootstrap3 %}
 {% block title %}
-MAI IT MEMBER
+MAI IT Член клуба {{member.name}}
 {% endblock %}
 {% block content %}
-<div class="panel panel-default">
+
+<div class="panel page-panel">
+
+   <div class="panel-body">
+   <div class="col-md-12 page-content">
+
+<div class="panel member-card">
    <div class="panel-heading">
       <div class=" panel-title">
-
                <div>
                   <div class="row text-left">
                      <div>
-                        <h3 class="col-md-12">{{ member.name }}</h3>
+                        
                      </div>
                   </div>
                </div>
-
          </div>
       </div>
 
    <div class="panel-body">
       {% if member.image %}
-         <div>
+         <div class="text-center">
             <img class="img-responsive img-thumbnail" src="{{ member.image.url }}" alt="member-name-image" style="display:inline;">
          </div>
       {% endif %}
-      {% if member.description %}
-      <div>
-      <p>{{member.description}}</p>
+
+      <div class="text-content">
+         <h3>{{ member.name }}</h3>
+      
+
+         {% if member.description %}
+         <div>
+         <p>{{member.description}}</p>
+         </div>
       </div>
       {% endif %}
    </div>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}

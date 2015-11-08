@@ -1,40 +1,35 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
-
-
-{% load bootstrap3 %}
 {% block title %}
-MAI IT PARTNER
+MAI IT Партнер {{ partner.name }}
 {% endblock %}
 {% block content %}
-{% load bootstrap3 %}
-<div class="panel panel-default">
-   <div class="panel-heading">
-      <div class=" panel-title">
-
-               <div>
-                  <div class="row text-left">
-                     <div>
-                        <h3 class="col-md-12">{{ partner.name }}</h3>
-                     </div>
-                  </div>
-               </div>
-
-         </div>
-      </div>
+<div class="panel page-panel">
 
    <div class="panel-body">
+   <div class="col-md-12 page-content">
+
+<div class="panel panel-default member-card">
+   <div class="panel-body">
       {% if partner.image %}
-         <div>
+         <div class="text-center">
             <img class="img-responsive img-thumbnail" src="{{ partner.image.url }}" alt="partner-name-image" style="display:inline;">
          </div>
       {% endif %}
-      {% if partner.description %}
-      <div>
-      <p>{{partner.description}}</p>
+
+      <div class="text-content">
+         <h3>{{ partner.name }}</h3>
+      
+
+         {% if partner.description %}
+         <div>
+         <p>{{partner.description}}</p>
+         </div>
       </div>
       {% endif %}
    </div>
 </div>
-
+</div>
+</div>
+</div>
 {% endblock %}

@@ -1,19 +1,29 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 {% block title %}
-MAI IT PARTNERS
+MAI IT Партнеры
 {% endblock %}
 {% block content %}
-<div class="container">
-<h2 class="text-center">Наши партнеры</h2>
+<div class="panel page-panel">
+
+	<div class="panel-body">
+		<div class="panel-heading headline-container">
+			<h2 class="headline">Наши партнеры</h2>
+		</div>
+			<div class="container">
 {% if partner_list %}
 	<div>
 	   {% include "paginator.html" with lst=partner_list total_pages=total_pages page_range=page_range  %}
-
+	   	</div>
+	   	<div>
 	   {% include "partner_list.html" %}	
-
+	   </div><div>
 	   {% include "paginator.html" with lst=partner_list total_pages=total_pages page_range=page_range  %}	
+	   </div>
 	</div>
 {% endif %}
+
+</div>
+</div>
 </div>
 {% endblock %}

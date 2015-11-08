@@ -230,7 +230,7 @@ function draw_graph(ctx, w, h, graph, actors){
             var connected_nodes = Object.keys(graph.nodes[actor.pos].vtx);
             var random_item = connected_nodes[Math.floor(Math.random()*connected_nodes.length)];
             actor.target = random_item
-            console.log(connected_nodes, actor.target)
+            //console.log(connected_nodes, actor.target)
             //console.log(connected_nodes, actor.target)
         }
         if (actor.moves_at <= n){  
@@ -240,7 +240,7 @@ function draw_graph(ctx, w, h, graph, actors){
           actor = move_actor(actor, pos.x, pos.y, target.x, target.y);
         }
         else{
-          console.log(pos, target)
+          //console.log(pos, target)
           actors.splice(actor_ind, 1);
         }
         }

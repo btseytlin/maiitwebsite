@@ -1,12 +1,18 @@
 {% load bootstrap3 %}
 {% if partner_list %}
-
-<div class='container'>
+<div>
    {% for partner in partner_list %}
-			<div class='col-md-8'>
-				{% include "partner_card.html"%}	
-
+	    {% with forloop.counter|divisibleby:4 as newrow %}
+		    {% if newrow %}
+		     	</div>
+		    {% endif %}
+			{% if newrow or forloop.counter0 == 0 %}
+				<div class='row'>
+			{% endif %}
+			<div class='col-md-6'>
+				{% include "partner_card.html" %}	
 			</div>
+		{% endwith %}
    {% endfor %}
 </div>
 {% endif %}
