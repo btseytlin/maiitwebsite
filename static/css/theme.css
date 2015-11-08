@@ -105,7 +105,11 @@ h2 {
 
 .page-panel{
   border-radius:0px;
-  
+
+  background: rgb(255,255,255)!important; /* Fall-back for browsers that don't
+                                    support rgba */
+  background: rgba(255,255,255,0.7)!important;
+
   border-top:0px;
 
 }
@@ -126,6 +130,7 @@ h2 {
   min-height:230px;
   padding:10px;
   margin-bottom:0px;
+  color:black;
 }
 
 .text-decoration{

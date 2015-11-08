@@ -1,117 +1,278 @@
-function getMousePos(canvas, evt) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top
-    };
+var colors = []
+colors[0] = '#0093DA';
+colors[1] = '#1400E0';
+colors[1] = '#000';
+
+var actor_colors = []
+actor_colors[0]='#44C2FF';
+actor_colors[1]='#3BFF3B';
+actor_colors[2]='#6555FF'
+actor_colors[3]='#'+(Math.random()*0xFFFFFF<<0).toString(16);
+
+
+
+function random_from_array(arr){
+  var item = arr[Math.floor(Math.random()*arr.length)];
+  return item
 }
 
-function getSpeed(){
-  return Math.round( Math.random() * 1.3) - 0.5;
-}
-var canvas;
+function create_adj_matrix(){
+  var max_modes = 8
+  var nodes_amount = Math.floor(Math.random()*max_modes) + 2
 
+  var weights = [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,2,2,3];
 
-var mousePos = {x:0, y:0};
-
-document.addEventListener('mousemove', function(evt) {
-  if (canvas){
-    mousePos = getMousePos(canvas, evt);
-  }
-  }, false);
-document.addEventListener("DOMContentLoaded", function(event) { 
-  
-
-  if (window.innerWidth < 1000){
-    return null;
-  }
-  canvas = document.querySelector('canvas');
-  
-  var ctx = canvas.getContext('2d'),
-     particles = [],
-  patriclesNum = 10,
-             w = window.innerWidth,
-             h = window.innerHeight,
-        colors = ['#34708D','#000'],
-        connect_dist = 100,
-        mouse_effective_dist = 50,
-        mouse_speed_change = 0.5;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
-
-  function Factory(){  
-    this.x =  Math.round( Math.random() * w);
-    this.y =  Math.round( Math.random() * h);
-    this.rad = Math.round( Math.random() * 10) + 2;
-    this.rgba = colors[ Math.round( Math.random() * 3) ];
-    this.vx = getSpeed();
-    this.vy = getSpeed();
-  }
-
-  function speed_modifier(speed, mspeedchange, effective_dist, dist){
-
-    var base = speed/mspeedchange*effective_dist/dist;
-    if (base>2.2*speed){
-      base = 2.2*speed;
+  var adj_matrix = []
+  for (var i=0;i<nodes_amount;i++){
+    adj_matrix[i] = []
+    for (var j=0;j<nodes_amount;j++){
+      adj_matrix[i][j] = 0
     }
-    return  base
   }
-     
-  function draw(){
-    ctx.clearRect(0, 0, w, h);
-    ctx.globalCompositeOperation = 'lighter';
-    for(var i = 0;i < patriclesNum; i++){
-      var temp = particles[i];
-      var factor = 1;
-       
-      for(var j = 0; j<patriclesNum; j++){
-        
-         var temp2 = particles[j];
-         ctx.linewidth = 3.5;
-        
-         if(findDistance(temp, temp2)<connect_dist){
-            ctx.strokeStyle = temp.rgba;
-            ctx.beginPath();
-            ctx.moveTo(temp.x, temp.y);
-            ctx.lineTo(temp2.x, temp2.y);
-            ctx.stroke();
-            factor++;
-         }
+
+  for (var i=0;i<nodes_amount;i++){
+    for (var j=0;j<nodes_amount;j++){
+      if (i!=j){
+        adj_matrix[i][j] = random_from_array(weights)
+        adj_matrix[j][i] = random_from_array(weights)
       }
+    }
+  }
+
+  return adj_matrix;
+}
+
+function create_node(index){
+    var rad = 6;
+    var margin = 5*rad;
+    var x_modifier = Math.random()*rad*rad/2;
+    var y_modifier = Math.random()*rad*rad;
+    var x = rad+(index % 2)*index*(rad/2+Math.random()*2*margin)+rad*x_modifier+(index % 5)*rad*Math.random();
+    var y = rad+!(index % 2)*index*(rad/2+Math.random()*2*margin)+rad*y_modifier+(index % 5)*rad*Math.random();
+    var drift_mod = 0.02
+    var driftx = Math.random()*rad*drift_mod - rad*drift_mod/2 
+    var drifty = Math.random()*rad*drift_mod - rad*drift_mod/2
+    var rgba = random_from_array(colors);
+  var node = {index:index, vtx:{}, rgba:rgba, rad:rad, x:x, y:y, driftx:driftx, drifty:drifty};
+  return node
+}
+
+function create_vtx(aindex, bindex, weight){
+  var vtx = {source:aindex,target:bindex, weight:weight};
+  return vtx
+}
+
+function create_actor(){
+  var actor = {};
+  actor.rad = 4;
+  actor.x = 0;
+  actor.y = 0;
+  actor.rgba = random_from_array(actor_colors);//'#'+(Math.random()*0xFFFFFF<<0).toString(16);//"#FF0000"
+  actor.pos = 0;//node index
+  actor.speed = 0.02;
+  actor.mov = 0;
+    actor.target = -1;
+
+  var d = new Date();
+  var n = d.getTime();
+  var delay = 4000;
+  actor.moves_at = n+Math.random()*delay;
+  return actor;
+}
+
+function create_actors(actors, nodes){
+  var taken_pos = [];
+  var actors_arr = [];
+  for(var i = 0;i < actors; i++){ 
+    var actor = create_actor();
+    for (var j = 0;j < nodes.length; j++){ 
+      if (!(taken_pos.indexOf(j) > -1)){
+        if (nodes[j].vtx.length > 0){
+          taken_pos.push(j)
+          actor.pos = j;
+          actor.x = nodes.x
+          actor.y = nodes.y
+        }
+      }
+      if (!(taken_pos.indexOf(actor.pos) > -1) ){
+        actors_arr.push(actor);
+        break;
+      }
+    }
+    
+  }
+  return actors_arr;
+}
+
+
+function move_actor(actor, posx, posy, towards_x, towards_y){
+  actor.mov = actor.mov + actor.speed
+  actor.x = posx+(towards_x-posx)*actor.mov
+  actor.y = posy+(towards_y-posy)*actor.mov
+  //console.log(actor.x, actor.y)
+  if (actor.x == towards_x && actor.y == towards_y || actor.mov >= 1){
+    actor.pos = actor.target
+    actor.mov = 0
+    var d = new Date();
+    var n = d.getTime();
+    delay = 2000
+    actor.moves_at = n+Math.random()*delay+delay/5;
+    actor.target = -1;
+  }
+  return actor
+}
+
+function Graph(){  
+    this.nodes = []
+    //this.vtx = {} // {node_index: [ {source:node_index, target:node_linked, weight:vertex_weight}  }]
+    this.adj_matrix = []
+}
+
+function create_graph(adj_matrix){
+  var graph = new Graph;
+  graph.adj_matrix = adj_matrix;
+  var nodes_amount = adj_matrix.length;
+  for(var i = 0;i < nodes_amount; i++){
+    graph.nodes.push(create_node(i));
+  }
+
+  for(var i = 0;i < nodes_amount; i++){
+    var node = graph.nodes[i]; 
+    for(var j = 0;j < adj_matrix[i].length; j++){
+      var node2 = graph.nodes[j];
+      if (adj_matrix[i][j]!=0){
+        if (!node.vtx[j]){
+          node.vtx[j] = create_vtx(i,j,adj_matrix[i][j]);
+        }
+        if (!node2.vtx[i]){
+          node2.vtx[i] = create_vtx(j,i,adj_matrix[j][i]);
+        }
+      }
+    }
+  }
+  return graph
+}
+
+function init_canvas(canvas, w, h){
+  if (!w){
+    w = window.innerWidth;
+  }
+  if (!h){
+    h = window.innerHeight;
+  }
+  canvas.width = w
+  canvas.height = h
+}
+
+function draw_graph(ctx, w, h, graph, actors){
+    
+  ctx.clearRect(0, 0, w, h);
+
       
-      
-      ctx.fillStyle = temp.rgba;
-      ctx.strokeStyle = temp.rgba;
-      
+      for(var i = 0;i < graph.nodes.length; i++){
+      var node = graph.nodes[i];
+
+            node.x = node.x + node.driftx
+            node.y = node.y + node.drifty
+            var rad = node.rad;
+            if (node.x>w-rad){
+                node.x=w-rad;
+                node.driftx = -node.driftx;
+            }
+            if (node.x<0+rad){
+                node.x=0+rad;
+                node.driftx = -node.driftx;
+            }
+          
+          if (node.y>h-rad){
+                node.y=w-rad;
+                node.drifty = -node.drifty;
+            }
+            if (node.y<0+rad){
+                node.y=0+rad;
+                node.drifty = -node.drifty;
+            }
+          
+          
+      ctx.fillStyle = node.rgba;
+      ctx.strokeStyle = node.rgba;
+
       ctx.beginPath();
-      ctx.arc(temp.x, temp.y, temp.rad, 0, Math.PI*2, true);
+      ctx.arc(node.x, node.y, node.rad, 0, Math.PI*2, true);
       ctx.fill();
       ctx.closePath();
-      
+
       ctx.beginPath();
-      ctx.arc(temp.x, temp.y, (temp.rad+5), 0, Math.PI*2, true);
+      ctx.arc(node.x, node.y, (node.rad+0.5*node.rad), 0, Math.PI*2, true);
       ctx.stroke();
       ctx.closePath();
-      
-      var dist = findDistance(mousePos, temp);
-      var speed_mod = speed_modifier(temp.vx,mouse_speed_change, mouse_effective_dist, dist);
-      temp.x += temp.vx + speed_mod;
-      temp.y += temp.vy + speed_mod;
-      if(temp.x > w){ temp.x=w;temp.vx = Math.abs(getSpeed()) * -Math.sign(temp.vx)}
-      if(temp.x < 0){ temp.x=0;temp.vx = Math.abs(getSpeed()) * -Math.sign(temp.vx)}
-      if(temp.y > h){ temp.y=h;temp.vy = Math.abs(getSpeed()) * -Math.sign(temp.vy)}
-      if(temp.y < 0){ temp.y=0;temp.vy = Math.abs(getSpeed()) * -Math.sign(temp.vy)}
-      
-      
+      for (var connected_node_ind in node.vtx) {
+                
+        var vtx = node.vtx[connected_node_ind];
+        var connected_node = graph.nodes[connected_node_ind]
+                
+                
+        ctx.strokeStyle = node.rgba;
+              ctx.beginPath();
+              ctx.moveTo(node.x, node.y);
+              ctx.lineTo(connected_node.x, connected_node.y);
+              ctx.stroke();
+      }
     }
-  }
+    for (var actor_ind in actors){
+        var actor = actors[actor_ind]; 
+      actor.x = graph.nodes[actor.pos].x
+      actor.y = graph.nodes[actor.pos].y
+        var d = new Date();
+    var n = d.getTime();
+        if (actor.target == -1){
+            
+            var connected_nodes = Object.keys(graph.nodes[actor.pos].vtx);
+            var random_item = connected_nodes[Math.floor(Math.random()*connected_nodes.length)];
+            actor.target = random_item
+            console.log(connected_nodes, actor.target)
+            //console.log(connected_nodes, actor.target)
+        }
+        if (actor.moves_at <= n){  
+            var target = graph.nodes[actor.target];
+            var pos = graph.nodes[actor.pos];
+          if (pos && target){
+          actor = move_actor(actor, pos.x, pos.y, target.x, target.y);
+        }
+        else{
+          console.log(pos, target)
+          actors.splice(actor_ind, 1);
+        }
+        }
+      ctx.fillStyle = actor.rgba;
+    ctx.strokeStyle = actor.rgba;
+      ctx.beginPath();
+    ctx.arc(actor.x, actor.y, actor.rad, 0, Math.PI*2, true);
+    ctx.fill();
+    ctx.closePath();
+    }
+    
+}
 
+function simulate(){
+  var canvas = document.querySelector('canvas');
+  var ctx = canvas.getContext('2d')
+  var w = window.innerWidth, h = window.innerHeight;
+  canvas = init_canvas(canvas, w, h);
+
+  // var adjacency_matrix = [
+  //  [0,1,0,1],
+  //  [1,0,1,0],
+  //  [0,0,1,1],
+  //  [0,1,0,0],
+ //        [0,1,0,0]
+  // ]
+
+  var adjacency_matrix = create_adj_matrix();
+  var actors_num = Math.ceil(adjacency_matrix.length/5)
   
-  function findDistance(p1,p2){  
-    return Math.sqrt( Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2) );
-  }
-
+  var graph = create_graph(adjacency_matrix);
+  var actors = create_actors(actors_num, graph.nodes);
   window.requestAnimFrame = (function(){
     return  window.requestAnimationFrame       ||
             window.webkitRequestAnimationFrame ||
@@ -120,17 +281,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
               window.setTimeout(callback, 1000 / 60);
             };
   })();
+  
+  function loop(){
+      draw_graph(ctx, w, h, graph, actors);
+      requestAnimFrame(loop);
+  }
 
-  (function init(){
+  loop()
 
-    for(var i = 0; i < patriclesNum; i++){
-      particles.push(new Factory);
-    }
-  })();
+}
 
-  (function loop(){
-    draw();
-    requestAnimFrame(loop);
-  })();
-
+document.addEventListener("DOMContentLoaded", function(event) { 
+  if (window.innerWidth > 1400){
+  simulate()
+}
 });
+
