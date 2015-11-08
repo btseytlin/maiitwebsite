@@ -175,21 +175,21 @@ function draw_graph(ctx, w, h, graph, actors){
             node.x = node.x + node.driftx
             node.y = node.y + node.drifty
             var rad = node.rad;
-            if (node.x>w-rad){
-                node.x=w-rad;
+            if (node.x>w-rad*2){
+                node.x=w-rad*2;
                 node.driftx = -node.driftx;
             }
-            if (node.x<0+rad){
-                node.x=0+rad;
+            if (node.x<0+rad*2){
+                node.x=0+rad*2;
                 node.driftx = -node.driftx;
             }
           
-          if (node.y>h-rad){
-                node.y=w-rad;
+          if (node.y>h-rad*2){
+                node.y=w-rad*2;
                 node.drifty = -node.drifty;
             }
-            if (node.y<0+rad){
-                node.y=0+rad;
+            if (node.y<0+rad*2){
+                node.y=0+rad*2;
                 node.drifty = -node.drifty;
             }
           

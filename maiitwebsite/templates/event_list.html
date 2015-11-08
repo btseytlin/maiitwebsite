@@ -1,12 +1,9 @@
 {% load bootstrap3 %}
 {% if event_list %}
 {% load i18n %}
-<div class='container'>
    {% for event in event_list %}
-			<div class='col-md-8'>
-				{% include "event_card.html"%}	
-
-			</div>
+		<div class='col-md-12'>
+			{% include "event_card.html"%}	
+		</div>
    {% endfor %}
-</div>
 {% endif %}

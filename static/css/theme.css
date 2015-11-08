@@ -11,11 +11,13 @@ canvas{
 
 }
 
-html, div, span {
+* {
   border-radius: 0px!important;
-  background:transparent!important;
-  text-shadow:none!important;
   box-shadow:none!important;
+  text-shadow:none!important;
+}
+html, div, span {
+  background:transparent!important;
 }
 nav {
   font-size:16px;
@@ -123,11 +125,13 @@ h2 {
   display:inline-block;
 }
 
-.text-content{
+.about-text-content {
   font-size:16px;
-  border:0;
   border: 2px solid #0093DA!important;
   min-height:230px;
+}
+
+.text-content{
   padding:10px;
   margin-bottom:0px;
   color:black;
@@ -142,9 +146,14 @@ h2 {
   margin-bottom:0px;
 }
 
+.event-card {
+  border:1px solid  #0093DA;
+  margin-bottom:40px!important;
+}
 #navbar-menu {
   overflow:hidden;
 }
+
 
 @media (max-width: 991px) {
     .navbar-header {
