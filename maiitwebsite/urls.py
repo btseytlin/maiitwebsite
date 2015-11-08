@@ -19,7 +19,13 @@ from . import views
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
+from .sitemap import *
 
+sitemaps = {
+    'static':StaticSitemap,
+    'dynamic':DynamicSitemap,
+}
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name="index"),
@@ -28,6 +34,8 @@ urlpatterns = [
     url(r'^members$', views.members, name="members"),
     url(r'^about$', views.about, name="about"),
     url(r'^club/', include('club.urls')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

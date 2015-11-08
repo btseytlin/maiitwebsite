@@ -3,6 +3,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 from unidecode import unidecode
+from django.core.urlresolvers import reverse
 
 class Event(models.Model):
 	created_date = models.DateTimeField(auto_now_add=True) 
@@ -13,6 +14,9 @@ class Event(models.Model):
 	slug = models.SlugField(max_length=300, blank=True)
 	class Meta: 
 		ordering = ['-date']
+
+	def get_absolute_url(self):
+		return reverse('event', args=[str(self.slug)])
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
@@ -36,6 +40,9 @@ class Member(models.Model):
 	class Meta: 
 		ordering = ['-created_date']
 
+	def get_absolute_url(self):
+		return reverse('member', args=[str(self.slug)])
+
 	def save(self, *args, **kwargs):
 		if not self.slug:
 			self.slug = slugify(unidecode(self.name))
@@ -51,6 +58,9 @@ class Project(models.Model):
 	class Meta: 
 		ordering = ['created_date']
 
+	def get_absolute_url(self):
+		return reverse('project', args=[str(self.slug)])
+
 	def save(self, *args, **kwargs):
 		if not self.slug:
 			self.slug = slugify(unidecode(self.title))
@@ -65,7 +75,10 @@ class Partner(models.Model):
 
 	class Meta: 
 		ordering = ['-created_date']
-		
+	
+	def get_absolute_url(self):
+		return reverse('partner', args=[str(self.slug)])
+
 	def save(self, *args, **kwargs):
 		if not self.slug:
 			self.slug = slugify(unidecode(self.name))
