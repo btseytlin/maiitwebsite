@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	{% load static %}
 	{% load bootstrap3 %}
@@ -10,6 +11,7 @@
 	<link href="{% static 'css/theme.css' %}" rel="stylesheet">
 	
     <title>{% block title %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{% endblock %}">
 </head>
 <body>	
 	<div class='wrapper'>

@@ -12,7 +12,7 @@ class Event(models.Model):
 	date = models.DateTimeField()
 	slug = models.SlugField(max_length=300, blank=True)
 	class Meta: 
-		ordering = ['date']
+		ordering = ['-date']
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
@@ -33,6 +33,9 @@ class Member(models.Model):
 	image = models.ImageField()
 	slug = models.SlugField(max_length=300, blank=True)
 
+	class Meta: 
+		ordering = ['-created_date']
+
 	def save(self, *args, **kwargs):
 		if not self.slug:
 			self.slug = slugify(unidecode(self.name))
@@ -44,6 +47,9 @@ class Project(models.Model):
 	description = models.CharField(max_length=300, default="", blank=True,null=True)
 	image = models.ImageField()
 	slug = models.SlugField(max_length=300, blank=True)
+
+	class Meta: 
+		ordering = ['created_date']
 
 	def save(self, *args, **kwargs):
 		if not self.slug:
@@ -57,6 +63,9 @@ class Partner(models.Model):
 	image = models.ImageField()
 	slug = models.SlugField(max_length=300, blank=True)
 
+	class Meta: 
+		ordering = ['-created_date']
+		
 	def save(self, *args, **kwargs):
 		if not self.slug:
 			self.slug = slugify(unidecode(self.name))

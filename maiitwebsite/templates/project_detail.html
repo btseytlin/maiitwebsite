@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 
-
-{% load bootstrap3 %}
 {% block title %}
-MAI IT PROJECT
+MAI IT Проект {{project.title}}
 {% endblock %}
+{% block description %}
+{{project.title}} {{member.description}}
+{% endblock %}
+
 {% block content %}
-{% load bootstrap3 %}
+
 <div class="panel panel-default">
    <div class="panel-heading">
       <div class=" panel-title">

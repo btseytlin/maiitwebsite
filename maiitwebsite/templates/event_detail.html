@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 
-{% load bootstrap3 %}
 {% block title %}
 MAI IT событие {{event.title}}
 {% endblock %}
+
+{% block description %}
+{{event.title}} {{event.description}}
+{% endblock %}
 {% block content %}
-{% load bootstrap3 %}
-{% load bootstrap3 %}
+
+
+
 <article>
 <div class="row text-left">
       <h4 class='col-md-12'>

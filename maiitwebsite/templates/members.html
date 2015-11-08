@@ -3,6 +3,9 @@
 {% block title %}
 MAI IT Члены клуба
 {% endblock %}
+{% block description %}
+Члены IT клуба МАИ {% if member_list %}: {{ member_list|length }} {%endif%} человек
+{% endblock %}
 {% block content %}
 <div class="panel page-panel">
 

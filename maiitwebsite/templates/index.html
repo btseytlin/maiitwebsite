@@ -3,9 +3,11 @@
 {% block title %}
 MAI IT Афиша
 {% endblock %}
+{% block description %}
+Афиша IT клуба МАИ, {% if event_list %}ближайшее событие: {{ event_list.0.date }} {%endif%}
+{% endblock %}
+
 {% block content %}
-
-
 <div class="panel page-panel">
 	<div class="panel-body">
 		<div class="panel-heading headline-container">
