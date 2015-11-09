@@ -7,9 +7,9 @@
 		     	</div>
 		    {% endif %}
 			{% if newrow or forloop.counter0 == 0 %}
-				<div class='row'>
+				<div style="display:block!important;" class='grid-row row'>
 			{% endif %}
-			<div class='col-md-6'>
+			<div class='grid-cell grid-cell-partners col-xs-12 col-md-4'>
 				{% include "partner_card.html" %}	
 			</div>
 		{% endwith %}

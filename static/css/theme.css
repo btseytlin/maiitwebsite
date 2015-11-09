@@ -172,6 +172,31 @@ h2 {
   padding:none;
 }
 
+.grid-row {
+  display: table;
+  height:350px;
+}
+
+.grid-cell {
+  display: table-cell;
+  height:350px;
+  margin-bottom: 10px;
+}
+
+.grid-cell-partners {
+  height:300px;
+}
+
+.grid-cell .panel {
+  padding-bottom: 5px;
+  height: 100%;
+}
+
+.grid-cell img {
+  min-height:220px;
+  max-height: 220px;
+}
+
 @media (max-width: 991px) {
     .navbar-header {
         float: none;
