@@ -12,10 +12,13 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-
+import sys
+# its win32, maybe there is win64 too?
+is_winows = sys.platform.startswith('win')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.dirname(__file__)
 
+ALLOWED_HOSTS = []
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -23,9 +26,7 @@ PROJECT_DIR = os.path.dirname(__file__)
 SECRET_KEY = '%^!4+psg(1$)w&+!j!-w2v$fa$x_gv7_m^ske0$t=2dgsmsp#t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -76,14 +77,26 @@ WSGI_APPLICATION = 'maiitwebsite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+if is_winows:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else:
+    DEBUG = True
 
-DATABASES = {
+    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'maiitwebsite',
+    'USER': 'postgres',
+    'PASSWORD': 'Seventy5',
+    'HOST':'',
+    'PORT':'',
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
