@@ -18,7 +18,7 @@ is_winows = sys.platform.startswith('win')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.dirname(__file__)
 
-ALLOWED_HOSTS = []
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'maiitwebsite.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 if is_winows:
     DEBUG = True
+    ALLOWED_HOSTS = []
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -87,7 +88,7 @@ if is_winows:
     }
 else:
     DEBUG = False
-
+    ALLOWED_HOSTS = ['*']
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
