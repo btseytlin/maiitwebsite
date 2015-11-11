@@ -92,7 +92,7 @@ else:
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'maiitwebsite',
     'USER': 'postgres',
-    'PASSWORD': 'Seventy5',
+    'PASSWORD': '',
     'HOST':'',
     'PORT':'',
     }
