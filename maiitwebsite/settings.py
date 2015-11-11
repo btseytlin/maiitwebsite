@@ -114,7 +114,7 @@ MAX_UPLOAD_SIZE = "5242880"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/' 
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles/")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join('static'), )
 #Add to a form containing a FileField and change the field names accordingly.
