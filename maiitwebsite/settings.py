@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'maiitwebsite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 if is_winows:
+    DEBUG = True
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -85,7 +86,7 @@ if is_winows:
         }
     }
 else:
-    DEBUG = True
+    DEBUG = False
 
     DATABASES = {
     'default': {
