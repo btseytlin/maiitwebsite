@@ -27,7 +27,7 @@ SECRET_KEY = '%^!4+psg(1$)w&+!j!-w2v$fa$x_gv7_m^ske0$t=2dgsmsp#t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-
+ADMINS = (('Boris', 'euphetar@gmail.com'))
 
 # Application definition
 
