@@ -129,6 +129,7 @@ h2 {
 .page-content{
   
   padding:0px;
+  width:100%;
   display:inline-block;
 }
 
@@ -160,6 +161,17 @@ h2 {
 
 .member-card {
   border:1px solid  #0093DA;
+
+}
+
+.member-card .panel-body {
+  padding:0;
+
+}
+
+.member-card h3 {
+  margin:0!important;
+  padding:0!important;
 }
 
 #navbar-menu {
@@ -173,14 +185,12 @@ h2 {
 }
 
 .grid-row {
-  display: table;
-  height:350px;
+  height:300px;
 }
 
 .grid-cell {
-  display: table-cell;
-  height:350px;
-  margin-bottom: 10px;
+  height:300px;
+  margin-bottom: 20px;
 }
 
 .grid-cell-partners {

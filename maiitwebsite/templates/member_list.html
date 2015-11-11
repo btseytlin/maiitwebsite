@@ -1,18 +1,19 @@
 {% load bootstrap3 %}
 {% if member_list %}
-<div>
    {% for member in member_list %}
-	    {% with forloop.counter|divisibleby:4 as newrow %}
-		    {% if newrow %}
-		     	</div>
-		    {% endif %}
+	    {% with forloop.counter0|divisibleby:3 as newrow %}
+	    	
+
 			{% if newrow or forloop.counter0 == 0 %}
+				{% if forloop.counter0 != 0 %}
+					</div>
+				{% endif %}
 				<div class='grid-row row'>
 			{% endif %}
-			<div class='grid-cell col-xs-11 col-md-5'>
-				{% include "member_card.html" %}	
+			<div class='grid-cell col-xs-11 col-md-4 pull-left'>{% include "member_card.html" %}</div>
+			{% if forloop.last %}
 			</div>
+			{% endif %}
 		{% endwith %}
    {% endfor %}
-</div>
 {% endif %}

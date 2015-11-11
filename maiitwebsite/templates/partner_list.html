@@ -2,16 +2,20 @@
 {% if partner_list %}
 <div>
    {% for partner in partner_list %}
-	    {% with forloop.counter|divisibleby:4 as newrow %}
-		    {% if newrow %}
-		     	</div>
-		    {% endif %}
+	    {% with forloop.counter0|divisibleby:3 as newrow %}
+		   
 			{% if newrow or forloop.counter0 == 0 %}
+				{% if forloop.counter0 != 0 %}
+					</div>
+				{% endif %}
 				<div style="display:block!important;" class='grid-row row'>
 			{% endif %}
 			<div class='grid-cell grid-cell-partners col-xs-12 col-md-4'>
 				{% include "partner_card.html" %}	
 			</div>
+			{% if forloop.last %}
+			</div>
+			{% endif %}
 		{% endwith %}
    {% endfor %}
 </div>

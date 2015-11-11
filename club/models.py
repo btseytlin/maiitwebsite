@@ -38,7 +38,7 @@ class Member(models.Model):
 	slug = models.SlugField(max_length=300, blank=True)
 
 	class Meta: 
-		ordering = ['-created_date']
+		ordering = ['created_date']
 
 	def get_absolute_url(self):
 		return reverse('member', args=[str(self.slug)])
@@ -74,7 +74,7 @@ class Partner(models.Model):
 	slug = models.SlugField(max_length=300, blank=True)
 
 	class Meta: 
-		ordering = ['-created_date']
+		ordering = ['created_date']
 	
 	def get_absolute_url(self):
 		return reverse('partner', args=[str(self.slug)])
