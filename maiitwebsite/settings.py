@@ -90,13 +90,11 @@ DATABASES = {
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC+3'
-
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 CONTENT_TYPES = ['image']
@@ -116,7 +114,7 @@ MAX_UPLOAD_SIZE = "5242880"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/' 
 
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ( os.path.join('static'), )
 #Add to a form containing a FileField and change the field names accordingly.
