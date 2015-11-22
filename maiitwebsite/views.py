@@ -2,6 +2,7 @@ from django.shortcuts import render, render_to_response
 from club.models import *
 from . import utils
 from django.template import RequestContext
+from django.db.models import Q
 def events(request):
 	template_name = 'index.html'
 
@@ -37,7 +38,7 @@ def projects(request):
 
 	projects = Project.objects.all()
 
-	paginate_by = 10
+	paginate_by = 5
 	page = request.GET.get('page')
 	show_pages_delta = 5
 	
@@ -48,7 +49,8 @@ def projects(request):
 def members(request):
 	template_name = 'members.html'
 
-	members = Member.objects.all()
+	organizers = Member.objects.filter(member_type='org')
+	members = Member.objects.filter( Q(member_type='reg') | Q(member_type='hon') )
 
 	paginate_by = 10
 	page = request.GET.get('page')
@@ -56,7 +58,7 @@ def members(request):
 	
 	total_num_pages = 0
 	member_list, page_range, total_num_pages = utils.paginated_list(page, paginate_by, show_pages_delta, members)
-	return render_to_response(template_name, { "member_list": member_list, "page_range": page_range, "total_pages":total_num_pages }, context_instance=RequestContext(request))
+	return render_to_response(template_name, { "organizers_list":organizers,  "member_list": member_list, "page_range": page_range, "total_pages":total_num_pages }, context_instance=RequestContext(request))
 
 
 

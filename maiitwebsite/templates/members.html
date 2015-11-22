@@ -8,25 +8,36 @@ MAI IT Члены клуба
 {% endblock %}
 {% block content %}
 <div class="panel page-panel">
-
 	<div class="panel-body">
-		<div class="panel-heading headline-container">
-			<h2 class="headline">Члены клуба</h2>
-		</div>
-	<div class="container">
-{% if member_list %}
-	    <div>
-	   {% include "paginator.html" with lst=member_list total_pages=total_pages page_range=page_range  %}
-	   </div>
-	   <div>
-	   {% include "member_list.html" %}	
-	   </div>
-	   <div>
-	   {% include "paginator.html" with lst=member_list total_pages=total_pages page_range=page_range  %}	
-	   </div>
+		{% if organizers_list %}
+			<div class="panel-heading headline-container">
+				<h2 class="headline">Организаторы</h2>
+			</div>
+		
 
-{% endif %}
-</div>
-</div>
+		<div class="container">
+			<div>
+			   {% include "member_list.html" with member_list=organizers_list %}	
+			</div>
+		</div>
+		{% endif %}
+
+		{% if member_list %}
+			<div class="panel-heading headline-container">
+				<h2 class="headline">Члены клуба</h2>
+			</div>
+			<div class="container">
+			    <div>
+			   {% include "paginator.html" with lst=member_list total_pages=total_pages page_range=page_range  %}
+			   </div>
+			   <div>
+			   {% include "member_list.html" %}	
+			   </div>
+			   <div>
+			   {% include "paginator.html" with lst=member_list total_pages=total_pages page_range=page_range  %}	
+			   </div>
+			</div>
+		{% endif %}
+	</div>
 </div>
 {% endblock %}
