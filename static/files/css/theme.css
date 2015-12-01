@@ -39,9 +39,7 @@ header {
  
 }
 
-.navbar-brand h1 {
-  margin:auto;
-}
+
 
 .content {
   padding-top:0px;
@@ -83,13 +81,18 @@ header {
 .navbar-brand {
   color:white!important;
   font-size:16px;
+  min-width:80px;
   min-height:75px;
-
+  padding:0!important;
   margin:0!important;
   font-size:36px!important;
-  border-bottom: 4px solid #44C2FF;
+
 }
 
+.navbar-brand img {
+  margin:auto;
+  max-height:75px;
+}
 .navbar-nav > li > a {
   padding:25px;
   border-bottom: 4px solid #0093DA;
@@ -136,7 +139,7 @@ h2 {
 .about-text-content {
   font-size:16px;
   border: 2px solid #0093DA!important;
-  min-height:230px;
+  min-height:170px;
 }
 
 .text-content{
