@@ -31,8 +31,10 @@ header {
   min-height: 100%;
   height: auto !important; /* This line and the next line are not necessary unless you need IE6 support */
   height: 100%;
-  margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+  margin: 0 auto -45px; /* the bottom margin is the negative value of the footer's height */
 }
+
+
 
 .navbar-header {
   background-color:#0093DA!important;
@@ -92,6 +94,34 @@ header {
 .navbar-brand img {
   margin:auto;
   max-height:75px;
+}
+
+.wrapper:after {
+
+  content: "";
+  display: block;
+  height:45px;
+}
+
+footer {
+  margin-bottom:-20px;
+  color:white;
+  height:45px;
+  font-weight: 600;
+  padding:auto;
+}
+
+footer div, footer span {
+    line-height: 45px;
+  }
+footer img {
+  margin:auto;
+  max-height:45px!important;
+}
+
+.footer-content {
+  background:#0093DA!important;
+  min-height:45px!important;
 }
 .navbar-nav > li > a {
   padding:25px;
