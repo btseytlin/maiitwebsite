@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 {% block title %}
-Лямбда: члены клуба
+Лямбда: участники
 {% endblock %}
 {% block description %}
-Члены "Лямбда": {% if member_list %}: {{ member_list|length }} {%endif%} человек
+Участники "Лямбда" {% if member_list %} {{ member_list|length }} человек{%endif%} 
 {% endblock %}
 {% block content %}
 <div class="panel page-panel">
@@ -24,7 +24,7 @@
 
 		{% if member_list %}
 			<div class="panel-heading headline-container">
-				<h2 class="headline">Члены клуба</h2>
+				<h2 class="headline">Участники</h2>
 			</div>
 			<div class="container">
 			    <div>
