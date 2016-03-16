@@ -119,6 +119,10 @@ footer img {
   max-height:45px!important;
 }
 
+footer a {
+  color:white!important;
+}
+
 .footer-content {
   background:#0093DA!important;
   min-height:45px!important;

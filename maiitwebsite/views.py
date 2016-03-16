@@ -17,7 +17,7 @@ def events(request):
 	return render_to_response(template_name, { "event_list": event_list, "page_range": page_range, "total_pages":total_num_pages }, context_instance=RequestContext(request))
 
 def index(request):
-	return events(request)
+	return about(request)
 
 def partners(request):
 	template_name = 'partners.html'

@@ -8,7 +8,7 @@
       {% endif %}
 
       <div class="text-content text-center">
-         <h3><a href="{% url 'partner' slug=partner.slug %}" >{{ partner.name }}</a></h3>
+         <h3><a href="{{ partner.url }}" >{{ partner.name }}</a></h3>
       
 
          {% if partner.description %}
